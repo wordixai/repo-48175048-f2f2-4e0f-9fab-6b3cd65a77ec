@@ -1,5 +1,5 @@
 import { PopButton } from './ui/pop-button'
-import { ShoppingCart, Heart, Star } from 'lucide-react'
+import { ShoppingCart, Heart, Star, Sparkles } from 'lucide-react'
 
 const products = [
   {
