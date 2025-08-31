@@ -1,6 +1,8 @@
 import PopHeader from '../components/PopHeader'
 import HeroSection from '../components/HeroSection'
 import ProductGrid from '../components/ProductGrid'
+import ArtGallery from '../components/ArtGallery'
+import ArtCustomizer from '../components/ArtCustomizer'
 import PopFooter from '../components/PopFooter'
 import CartSidebar from '../components/CartSidebar'
 import { Toaster } from 'sonner'
@@ -11,6 +13,8 @@ const Index = () => {
       <PopHeader />
       <HeroSection />
       <ProductGrid />
+      <ArtGallery />
+      <ArtCustomizer />
       <PopFooter />
       <CartSidebar />
       <Toaster 
