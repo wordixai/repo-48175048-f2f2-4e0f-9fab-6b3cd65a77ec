@@ -1,6 +1,7 @@
-import { Search, ShoppingCart, User, Menu } from 'lucide-react'
+import { Search, User, Menu } from 'lucide-react'
 import { PopButton } from './ui/pop-button'
 import { useState } from 'react'
+import CartIcon from './CartIcon'
 
 const PopHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -51,12 +52,7 @@ const PopHeader = () => {
             <PopButton variant="outline" size="icon" className="hidden sm:flex">
               <User size={20} />
             </PopButton>
-            <PopButton variant="accent" size="icon" className="relative">
-              <ShoppingCart size={20} />
-              <span className="absolute -top-2 -right-2 bg-pop-pink text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                3
-              </span>
-            </PopButton>
+            <CartIcon />
             <PopButton
               variant="secondary"
               size="icon"

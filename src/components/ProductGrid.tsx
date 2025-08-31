@@ -1,5 +1,6 @@
 import { PopButton } from './ui/pop-button'
-import { ShoppingCart, Heart, Star, Sparkles } from 'lucide-react'
+import { Heart, Star, Sparkles } from 'lucide-react'
+import AddToCartButton from './AddToCartButton'
 
 const products = [
   {
@@ -117,10 +118,10 @@ const ProductCard = ({ product }) => {
           )}
         </div>
         
-        <PopButton className="w-full group/btn" variant="primary">
-          <ShoppingCart size={18} className="mr-2 group-hover/btn:animate-bounce" />
-          ADD TO CART
-        </PopButton>
+        <AddToCartButton 
+          product={product}
+          className="w-full"
+        />
       </div>
     </div>
   )
