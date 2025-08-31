@@ -2,26 +2,189 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Retro Pop Art Design System */
+@import url('https://fonts.googleapis.com/css2?family=Bangers:wght@400&family=Kalam:wght@300;400;700&display=swap');
 
 @layer base {
   :root {
-   
-  }
-
-  .dark {
-
+    /* Pop Art Color Palette */
+    --pop-orange: 25 100% 60%;
+    --pop-pink: 330 85% 65%;
+    --pop-yellow: 50 100% 70%;
+    --pop-blue: 210 100% 65%;
+    --pop-purple: 280 70% 70%;
+    --pop-green: 120 70% 60%;
+    
+    /* Background gradients */
+    --bg-primary: linear-gradient(135deg, hsl(25 100% 60%) 0%, hsl(330 85% 65%) 100%);
+    --bg-secondary: linear-gradient(45deg, hsl(330 85% 65%) 0%, hsl(50 100% 70%) 100%);
+    --bg-accent: linear-gradient(90deg, hsl(210 100% 65%) 0%, hsl(280 70% 70%) 100%);
+    
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+    --primary: var(--pop-orange);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--pop-pink);
+    --secondary-foreground: 0 0% 100%;
+    --accent: var(--pop-yellow);
+    --accent-foreground: 0 0% 5%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: var(--pop-orange);
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 5%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 5%;
+    --radius: 12px;
+    
+    /* Comic book effects */
+    --comic-shadow: 4px 4px 0px hsl(0 0% 0%);
+    --comic-shadow-lg: 8px 8px 0px hsl(0 0% 0%);
+    --comic-border: 3px solid hsl(0 0% 0%);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  /* Pop Art Typography */
+  .font-comic {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
   }
+  
+  .font-handwritten {
+    font-family: 'Kalam', cursive;
+  }
+  
+  /* Comic Book Styles */
+  .comic-frame {
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow);
+    background: white;
+    position: relative;
+  }
+  
+  .comic-frame-lg {
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow-lg);
+    background: white;
+    position: relative;
+  }
+  
+  /* Halftone dot pattern */
+  .halftone-dots::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, hsl(0 0% 0% / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .halftone-dots-pink::before {
+    background-image: radial-gradient(circle, hsl(330 85% 65% / 0.3) 2px, transparent 2px);
+    background-size: 15px 15px;
+  }
+  
+  .halftone-dots-orange::before {
+    background-image: radial-gradient(circle, hsl(25 100% 60% / 0.3) 2px, transparent 2px);
+    background-size: 18px 18px;
+  }
+  
+  /* Pop Art Button Animations */
+  .pop-bounce {
+    animation: popBounce 0.6s ease-in-out infinite alternate;
+  }
+  
+  @keyframes popBounce {
+    0% { transform: translateY(0px) rotate(-1deg); }
+    100% { transform: translateY(-8px) rotate(1deg); }
+  }
+  
+  .pop-wiggle:hover {
+    animation: popWiggle 0.5s ease-in-out;
+  }
+  
+  @keyframes popWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg) scale(1.05); }
+    75% { transform: rotate(3deg) scale(1.05); }
+  }
+  
+  /* Background patterns */
+  .bg-pop-gradient {
+    background: var(--bg-primary);
+  }
+  
+  .bg-pop-secondary {
+    background: var(--bg-secondary);
+  }
+  
+  .bg-pop-accent {
+    background: var(--bg-accent);
+  }
+  
+  /* Comic speech bubble */
+  .speech-bubble {
+    position: relative;
+    background: white;
+    border: var(--comic-border);
+    border-radius: 20px;
+    padding: 1rem;
+  }
+  
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+    border-bottom: 0;
+    margin-left: -15px;
+  }
+  
+  .speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border: 18px solid transparent;
+    border-top-color: black;
+    border-bottom: 0;
+    margin-left: -18px;
+  }
+}
 
-  body {
-    @apply bg-background text-foreground;
+@layer utilities {
+  .text-pop-gradient {
+    background: linear-gradient(45deg, hsl(25 100% 60%), hsl(330 85% 65%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .shadow-comic {
+    box-shadow: var(--comic-shadow);
+  }
+  
+  .shadow-comic-lg {
+    box-shadow: var(--comic-shadow-lg);
+  }
+  
+  .border-comic {
+    border: var(--comic-border);
   }
 }
